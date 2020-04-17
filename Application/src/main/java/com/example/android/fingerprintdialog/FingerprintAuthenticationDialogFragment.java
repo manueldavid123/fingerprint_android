@@ -104,7 +104,9 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
         mFingerprintUiHelper = new FingerprintUiHelper(
                 mActivity.getSystemService(FingerprintManager.class),
                 (ImageView) v.findViewById(R.id.fingerprint_icon),
-                (TextView) v.findViewById(R.id.fingerprint_status), this);
+                (TextView) v.findViewById(R.id.fingerprint_status),
+                this,
+                getActivity().getApplication());
         updateStage();
 
         // If fingerprint authentication is not available, switch immediately to the backup

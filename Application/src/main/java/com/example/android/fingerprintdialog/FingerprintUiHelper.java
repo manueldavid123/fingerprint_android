@@ -16,10 +16,14 @@
 
 package com.example.android.fingerprintdialog;
 
+import android.app.Application;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.mdgarcia.android.utils.manager.CustomFingerprintManager;
+
 
 /**
  * Small helper class to manage text/icon around fingerprint authentication UI.
@@ -34,6 +38,7 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
     private final TextView mErrorTextView;
     private final Callback mCallback;
     private CancellationSignal mCancellationSignal;
+    private CustomFingerprintManager customFingerprintManager;
 
     private boolean mSelfCancelled;
 
@@ -41,11 +46,16 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
      * Constructor for {@link FingerprintUiHelper}.
      */
     FingerprintUiHelper(FingerprintManager fingerprintManager,
-            ImageView icon, TextView errorTextView, Callback callback) {
+                        ImageView icon,
+                        TextView errorTextView,
+                        Callback callback,
+                        Application application
+    ) {
         mFingerprintManager = fingerprintManager;
         mIcon = icon;
         mErrorTextView = errorTextView;
         mCallback = callback;
+        customFingerprintManager = new CustomFingerprintManager(application);
     }
 
     public boolean isFingerprintAuthAvailable() {
@@ -98,10 +108,13 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
     public void onAuthenticationFailed() {
         showError(mIcon.getResources().getString(
                 R.string.fingerprint_not_recognized));
+
+        customFingerprintManager.addFingerprint(false);
     }
 
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
+        customFingerprintManager.addFingerprint(true);
         mErrorTextView.removeCallbacks(mResetErrorTextRunnable);
         mIcon.setImageResource(R.drawable.ic_fingerprint_success);
         mErrorTextView.setTextColor(

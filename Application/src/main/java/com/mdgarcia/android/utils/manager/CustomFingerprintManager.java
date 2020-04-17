@@ -5,11 +5,11 @@ import android.app.Application;
 import com.mdgarcia.android.utils.model.Fingerprint;
 import com.mdgarcia.android.utils.repository.FingerprintRepository;
 
-public class FingerprintManager {
+public class CustomFingerprintManager {
 
     private FingerprintRepository fingerprintRepository;
 
-    public FingerprintManager(Application application) {
+    public CustomFingerprintManager(Application application) {
         this.fingerprintRepository = new FingerprintRepository(
                 application
         );
