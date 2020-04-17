@@ -1,0 +1,173 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:16:1-45:12
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:16:1-45:12
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:16:1-45:12
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:16:1-45:12
+MERGED from [com.android.support:support-v13:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2e7d0010ab8d3e4486a5030bc17dea86/support-v13-25.0.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d96cf9c1d614c3b0db9f09702b38f40c/appcompat-v7-25.0.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-v4:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/7c54944ef31a1da5e5cd9e467ae5841c/support-v4-25.0.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:cardview-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/71d59d2f0d08d03dff83b5f51f2d7709/cardview-v7-25.0.1/AndroidManifest.xml:17:1-24:12
+MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/0b6ab8cb64fcaacf8dc02cb74292515b/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/ce7bb98e536310eeeebd37608312b1a1/livedata-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/92f6af4bc0abf28ee1ede93e9e0cf702/support-fragment-25.0.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/5e7c2c4f303ff4a1539e905f997dbeb6/support-media-compat-25.0.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/a294400e1f26757ca590b1308c3a1f28/support-core-ui-25.0.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/498b68b6f90d86dd7310df5983dcbf21/animated-vector-drawable-25.0.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/faed9969fc28872cb3367011146e8824/support-vector-drawable-25.0.1/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/b79ef095e138ea85a4789c76fd06b977/support-compat-26.1.0/AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.persistence:db-framework:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/f9f398f252e548923ba5ea2e70f07d06/db-framework-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence:db:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2c0c69425b5922c39a192b0aea8f199e/db-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/65e4a1b53d53fb2844bd9240a6b3b269/livedata-core-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/1dfa2778e88aa729abfa2b77e308fe82/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:17:1-30:12
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:16:1-45:12
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:16:1-45:12
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:16:1-45:12
+	package
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:16:11-58
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:20:5-30
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:18:5-51
+	xmlns:android
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:17:5-63
+	android:versionCode
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:19:5-28
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+uses-permission#android.permission.USE_FINGERPRINT
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:22:5-74
+	android:name
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:22:22-71
+application
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:24:5-44:19
+MERGED from [com.android.support:support-v13:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2e7d0010ab8d3e4486a5030bc17dea86/support-v13-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v13:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2e7d0010ab8d3e4486a5030bc17dea86/support-v13-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d96cf9c1d614c3b0db9f09702b38f40c/appcompat-v7-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d96cf9c1d614c3b0db9f09702b38f40c/appcompat-v7-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/7c54944ef31a1da5e5cd9e467ae5841c/support-v4-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/7c54944ef31a1da5e5cd9e467ae5841c/support-v4-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:cardview-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/71d59d2f0d08d03dff83b5f51f2d7709/cardview-v7-25.0.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/71d59d2f0d08d03dff83b5f51f2d7709/cardview-v7-25.0.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/92f6af4bc0abf28ee1ede93e9e0cf702/support-fragment-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/92f6af4bc0abf28ee1ede93e9e0cf702/support-fragment-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/5e7c2c4f303ff4a1539e905f997dbeb6/support-media-compat-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/5e7c2c4f303ff4a1539e905f997dbeb6/support-media-compat-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/a294400e1f26757ca590b1308c3a1f28/support-core-ui-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/a294400e1f26757ca590b1308c3a1f28/support-core-ui-25.0.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/498b68b6f90d86dd7310df5983dcbf21/animated-vector-drawable-25.0.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/498b68b6f90d86dd7310df5983dcbf21/animated-vector-drawable-25.0.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/faed9969fc28872cb3367011146e8824/support-vector-drawable-25.0.1/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/faed9969fc28872cb3367011146e8824/support-vector-drawable-25.0.1/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/b79ef095e138ea85a4789c76fd06b977/support-compat-26.1.0/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/b79ef095e138ea85a4789c76fd06b977/support-compat-26.1.0/AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:28:9-35
+	android:label
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:27:9-49
+	tools:ignore
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:30:9-48
+	android:icon
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:26:9-43
+	android:allowBackup
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:25:9-35
+	android:theme
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:29:9-53
+activity#com.example.android.fingerprintdialog.MainActivity
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:32:9-39:20
+	android:label
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:34:13-53
+	android:name
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:33:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:35:13-38:29
+action#android.intent.action.MAIN
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:36:17-69
+	android:name
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:36:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:37:17-77
+	android:name
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:37:27-74
+activity#com.example.android.fingerprintdialog.SettingsActivity
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:41:9-43:55
+	android:label
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:43:13-52
+	android:name
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:42:13-45
+uses-sdk
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+MERGED from [com.android.support:support-v13:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2e7d0010ab8d3e4486a5030bc17dea86/support-v13-25.0.1/AndroidManifest.xml:21:5-23:55
+MERGED from [com.android.support:support-v13:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2e7d0010ab8d3e4486a5030bc17dea86/support-v13-25.0.1/AndroidManifest.xml:21:5-23:55
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d96cf9c1d614c3b0db9f09702b38f40c/appcompat-v7-25.0.1/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d96cf9c1d614c3b0db9f09702b38f40c/appcompat-v7-25.0.1/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/7c54944ef31a1da5e5cd9e467ae5841c/support-v4-25.0.1/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/7c54944ef31a1da5e5cd9e467ae5841c/support-v4-25.0.1/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:cardview-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/71d59d2f0d08d03dff83b5f51f2d7709/cardview-v7-25.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/71d59d2f0d08d03dff83b5f51f2d7709/cardview-v7-25.0.1/AndroidManifest.xml:20:5-43
+MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/0b6ab8cb64fcaacf8dc02cb74292515b/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/0b6ab8cb64fcaacf8dc02cb74292515b/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/ce7bb98e536310eeeebd37608312b1a1/livedata-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/ce7bb98e536310eeeebd37608312b1a1/livedata-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/92f6af4bc0abf28ee1ede93e9e0cf702/support-fragment-25.0.1/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/92f6af4bc0abf28ee1ede93e9e0cf702/support-fragment-25.0.1/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/5e7c2c4f303ff4a1539e905f997dbeb6/support-media-compat-25.0.1/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/5e7c2c4f303ff4a1539e905f997dbeb6/support-media-compat-25.0.1/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/a294400e1f26757ca590b1308c3a1f28/support-core-ui-25.0.1/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/a294400e1f26757ca590b1308c3a1f28/support-core-ui-25.0.1/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/498b68b6f90d86dd7310df5983dcbf21/animated-vector-drawable-25.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/498b68b6f90d86dd7310df5983dcbf21/animated-vector-drawable-25.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/faed9969fc28872cb3367011146e8824/support-vector-drawable-25.0.1/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/faed9969fc28872cb3367011146e8824/support-vector-drawable-25.0.1/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/b79ef095e138ea85a4789c76fd06b977/support-compat-26.1.0/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/b79ef095e138ea85a4789c76fd06b977/support-compat-26.1.0/AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.persistence:db-framework:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/f9f398f252e548923ba5ea2e70f07d06/db-framework-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db-framework:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/f9f398f252e548923ba5ea2e70f07d06/db-framework-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2c0c69425b5922c39a192b0aea8f199e/db-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2c0c69425b5922c39a192b0aea8f199e/db-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/65e4a1b53d53fb2844bd9240a6b3b269/livedata-core-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/65e4a1b53d53fb2844bd9240a6b3b269/livedata-core-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/1dfa2778e88aa729abfa2b77e308fe82/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/1dfa2778e88aa729abfa2b77e308fe82/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v13:25.0.1] /Users/manuel/.gradle/caches/transforms-2/files-2.1/2e7d0010ab8d3e4486a5030bc17dea86/support-v13-25.0.1/AndroidManifest.xml:23:9-52
+	android:targetSdkVersion
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+		INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/b79ef095e138ea85a4789c76fd06b977/support-compat-26.1.0/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/b79ef095e138ea85a4789c76fd06b977/support-compat-26.1.0/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:26:13-58
