@@ -559,6 +559,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable tile
+id accepted
 id action0
 id action_bar
 id action_bar_activity_content
@@ -594,7 +595,6 @@ id cancel_button
 id checkbox
 id chronometer
 id collapseActionView
-id confirmation_message
 id contentPanel
 id custom
 id customPanel
@@ -603,7 +603,6 @@ id default_activity_button
 id description
 id disableHome
 id edit_query
-id encrypted_message
 id end
 id end_padder
 id expand_activities_button
@@ -632,6 +631,7 @@ id never
 id new_fingerprint_enrolled_description
 id none
 id normal
+id notAccepted
 id notification_background
 id notification_main_column
 id notification_main_column_container
@@ -641,8 +641,6 @@ id password_description
 id progress_circular
 id progress_horizontal
 id purchase_button
-id purchase_button_not_invalidated
-id purchase_button_not_invalidated_description
 id radio
 id right_icon
 id right_side
@@ -678,6 +676,8 @@ id tabMode
 id text
 id text2
 id textSpacerNoButtons
+id textView2
+id textView4
 id time
 id title
 id title_template

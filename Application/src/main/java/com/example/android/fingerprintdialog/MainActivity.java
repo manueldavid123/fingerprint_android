@@ -33,7 +33,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mdgarcia.android.utils.model.Fingerprint;
+import com.mdgarcia.android.utils.repository.FingerprintRepository;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -101,21 +106,6 @@ public class MainActivity extends Activity {
         KeyguardManager keyguardManager = getSystemService(KeyguardManager.class);
         FingerprintManager fingerprintManager = getSystemService(FingerprintManager.class);
         Button purchaseButton = (Button) findViewById(R.id.purchase_button);
-        Button purchaseButtonNotInvalidated = (Button) findViewById(
-                R.id.purchase_button_not_invalidated);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            purchaseButtonNotInvalidated.setEnabled(true);
-            purchaseButtonNotInvalidated.setOnClickListener(
-                    new PurchaseButtonClickListener(cipherNotInvalidated,
-                            KEY_NAME_NOT_INVALIDATED));
-        } else {
-            // Hide the purchase button which uses a non-invalidated key
-            // if the app doesn't work on Android N preview
-            purchaseButtonNotInvalidated.setVisibility(View.GONE);
-            findViewById(R.id.purchase_button_not_invalidated_description)
-                    .setVisibility(View.GONE);
-        }
 
         if (!keyguardManager.isKeyguardSecure()) {
             // Show a message that the user hasn't set up a fingerprint or lock screen.
@@ -124,7 +114,6 @@ public class MainActivity extends Activity {
                             + "Go to 'Settings -> Security -> Fingerprint' to set up a fingerprint",
                     Toast.LENGTH_LONG).show();
             purchaseButton.setEnabled(false);
-            purchaseButtonNotInvalidated.setEnabled(false);
             return;
         }
 
@@ -191,7 +180,15 @@ public class MainActivity extends Activity {
 
     // Show confirmation, if fingerprint was used show crypto information.
     private void showConfirmation(byte[] encrypted) {
-        findViewById(R.id.confirmation_message).setVisibility(View.VISIBLE);
+        FingerprintRepository fingerprintRepository = new FingerprintRepository(getApplication());
+        Fingerprint[] accepted  = fingerprintRepository.getAllAccepted();
+        Fingerprint[] notAccepted = fingerprintRepository.getAllNotAffected();
+
+        TextView acceptedWidget = (TextView) findViewById(R.id.accepted);
+        acceptedWidget.setText(accepted.length + "");
+
+        TextView notAcceptedWidget = (TextView) findViewById(R.id.notAccepted);
+        notAcceptedWidget.setText(notAccepted.length + "");
     }
 
     /**
@@ -287,8 +284,6 @@ public class MainActivity extends Activity {
 
         @Override
         public void onClick(View view) {
-            findViewById(R.id.confirmation_message).setVisibility(View.GONE);
-            findViewById(R.id.encrypted_message).setVisibility(View.GONE);
 
             // Set up the crypto object for later. The object will be authenticated by use
             // of the fingerprint.

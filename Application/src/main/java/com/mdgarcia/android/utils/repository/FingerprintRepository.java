@@ -24,6 +24,14 @@ public class FingerprintRepository {
         return fingerprintDao.getAll();
     }
 
+    public Fingerprint[] getAllAccepted() {
+        return fingerprintDao.getAccepted();
+    }
+
+    public Fingerprint[] getAllNotAffected() {
+        return fingerprintDao.getNotAccepted();
+    }
+
     public void insert(final Fingerprint fingerprint) {
         FingerprintDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override

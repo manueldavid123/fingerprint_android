@@ -22,7 +22,7 @@
 22    <uses-sdk
 23        android:minSdkVersion="23"
 23-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
-24        android:targetSdkVersion="24" />
+24        android:targetSdkVersion="29" />
 24-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml
 25
 26    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
@@ -41,45 +41,44 @@
 33-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:27:9-49
 34        android:supportsRtl="true"
 34-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:28:9-35
-35        android:testOnly="true"
-36        android:theme="@style/Theme.AppCompat.Light" >
-36-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:29:9-53
-37        <activity
-37-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:32:9-39:20
-38            android:name="com.example.android.fingerprintdialog.MainActivity"
-38-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:33:13-41
-39            android:label="@string/application_name" >
-39-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:34:13-53
-40            <intent-filter>
-40-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:35:13-38:29
-41                <action android:name="android.intent.action.MAIN" />
-41-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:36:17-69
-41-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:36:25-66
-42
-43                <category android:name="android.intent.category.LAUNCHER" />
-43-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:37:17-77
-43-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:37:27-74
-44            </intent-filter>
-45        </activity>
-46        <activity
-46-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:41:9-43:55
-47            android:name="com.example.android.fingerprintdialog.SettingsActivity"
-47-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:42:13-45
-48            android:label="@string/action_settings" />
-48-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:43:13-52
-49
-50        <meta-data
-50-->[com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:26:9-28:38
-51            android:name="android.support.VERSION"
-51-->[com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:27:13-51
-52            android:value="26.1.0" />
-52-->[com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:28:13-35
-53        <meta-data
-53-->[android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:25:9-27:47
-54            android:name="android.arch.lifecycle.VERSION"
-54-->[android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:26:13-58
-55            android:value="27.0.0-SNAPSHOT" />
-55-->[android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:27:13-44
-56    </application>
-57
-58</manifest>
+35        android:theme="@style/Theme.AppCompat.Light" >
+35-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:29:9-53
+36        <activity
+36-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:32:9-39:20
+37            android:name="com.example.android.fingerprintdialog.MainActivity"
+37-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:33:13-41
+38            android:label="@string/application_name" >
+38-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:34:13-53
+39            <intent-filter>
+39-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:35:13-38:29
+40                <action android:name="android.intent.action.MAIN" />
+40-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:36:17-69
+40-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:36:25-66
+41
+42                <category android:name="android.intent.category.LAUNCHER" />
+42-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:37:17-77
+42-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:37:27-74
+43            </intent-filter>
+44        </activity>
+45        <activity
+45-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:41:9-43:55
+46            android:name="com.example.android.fingerprintdialog.SettingsActivity"
+46-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:42:13-45
+47            android:label="@string/action_settings" />
+47-->/Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:43:13-52
+48
+49        <meta-data
+49-->[com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:26:9-28:38
+50            android:name="android.support.VERSION"
+50-->[com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:27:13-51
+51            android:value="26.1.0" />
+51-->[com.android.support:support-core-utils:26.1.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/fdaeeb0839fbb38691ae9f492e459937/support-core-utils-26.1.0/AndroidManifest.xml:28:13-35
+52        <meta-data
+52-->[android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:25:9-27:47
+53            android:name="android.arch.lifecycle.VERSION"
+53-->[android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:26:13-58
+54            android:value="27.0.0-SNAPSHOT" />
+54-->[android.arch.lifecycle:runtime:1.0.0] /Users/manuel/.gradle/caches/transforms-2/files-2.1/d3db470788f7138b14904d505022a2c8/runtime-1.0.0/AndroidManifest.xml:27:13-44
+55    </application>
+56
+57</manifest>

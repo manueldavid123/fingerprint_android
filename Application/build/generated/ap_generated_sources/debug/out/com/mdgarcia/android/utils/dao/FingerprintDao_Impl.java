@@ -113,4 +113,80 @@ public class FingerprintDao_Impl implements FingerprintDao {
       _statement.release();
     }
   }
+
+  @Override
+  public Fingerprint[] getAccepted() {
+    final String _sql = "SELECT * FROM fingerprints where accepted = 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    final Cursor _cursor = __db.query(_statement);
+    try {
+      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
+      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
+      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
+      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
+      int _index = 0;
+      while(_cursor.moveToNext()) {
+        final Fingerprint _item;
+        final boolean _tmpAccepted;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
+        _tmpAccepted = _tmp != 0;
+        _item = new Fingerprint(_tmpAccepted);
+        final int _tmpId;
+        _tmpId = _cursor.getInt(_cursorIndexOfId);
+        _item.setId(_tmpId);
+        final Long _tmpTimestamp;
+        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+          _tmpTimestamp = null;
+        } else {
+          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+        }
+        _item.setTimestamp(_tmpTimestamp);
+        _result[_index] = _item;
+        _index ++;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public Fingerprint[] getNotAccepted() {
+    final String _sql = "SELECT * FROM fingerprints where accepted = 0";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    final Cursor _cursor = __db.query(_statement);
+    try {
+      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
+      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
+      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
+      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
+      int _index = 0;
+      while(_cursor.moveToNext()) {
+        final Fingerprint _item;
+        final boolean _tmpAccepted;
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
+        _tmpAccepted = _tmp != 0;
+        _item = new Fingerprint(_tmpAccepted);
+        final int _tmpId;
+        _tmpId = _cursor.getInt(_cursorIndexOfId);
+        _item.setId(_tmpId);
+        final Long _tmpTimestamp;
+        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+          _tmpTimestamp = null;
+        } else {
+          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+        }
+        _item.setTimestamp(_tmpTimestamp);
+        _result[_index] = _item;
+        _index ++;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
 }
