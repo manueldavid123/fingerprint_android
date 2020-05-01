@@ -49,7 +49,7 @@
         <Button
             android:id="@+id/purchase_button"
             style="@android:style/Widget.Material.Button.Colored"
-            android:layout_width="375dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="8dp"
@@ -132,6 +132,23 @@
                     android:layout_column="1" />
             </TableRow>
         </TableLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/admin_fingerprints"
+                style="@android:style/Widget.Material.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ADMINISTRAR HUELLAS" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
