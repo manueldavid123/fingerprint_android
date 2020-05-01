@@ -16,7 +16,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".MainActivity"
-            android:label="@string/application_name">
+            android:label="Práctica MD García">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,9 +24,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/action_settings" />
-        <activity android:name=".Administration" />
+            android:name=".Administration"
+            android:label="Administración"
+            />
     </application>
 
 </manifest>

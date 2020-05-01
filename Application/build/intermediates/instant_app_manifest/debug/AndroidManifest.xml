@@ -22,7 +22,7 @@
         android:theme="@style/Theme.AppCompat.Light" >
         <activity
             android:name="com.example.android.fingerprintdialog.MainActivity"
-            android:label="@string/application_name" >
+            android:label="Práctica MD García" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,9 +30,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.android.fingerprintdialog.SettingsActivity"
-            android:label="@string/action_settings" />
-        <activity android:name="com.example.android.fingerprintdialog.Administration" />
+            android:name="com.example.android.fingerprintdialog.Administration"
+            android:label="Administración" />
 
         <provider
             android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"

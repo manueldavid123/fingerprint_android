@@ -91,7 +91,7 @@ MERGED from [com.android.support:support-compat:26.1.0] /Users/manuel/.gradle/ca
 activity#com.example.android.fingerprintdialog.MainActivity
 ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:17:9-25:20
 	android:label
-		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:19:13-53
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:19:13-47
 	android:name
 		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:18:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
@@ -104,16 +104,12 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:23:17-77
 	android:name
 		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:23:27-74
-activity#com.example.android.fingerprintdialog.SettingsActivity
-ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:26:9-28:55
-	android:label
-		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:28:13-52
-	android:name
-		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:27:13-45
 activity#com.example.android.fingerprintdialog.Administration
-ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:29:9-52
+ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:26:9-29:15
+	android:label
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:28:13-43
 	android:name
-		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:29:19-49
+		ADDED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml:27:13-43
 uses-sdk
 INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/manuel/Downloads/FingerprintDialog/Application/src/main/AndroidManifest.xml

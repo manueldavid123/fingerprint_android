@@ -64,12 +64,12 @@
         "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/drawable-hdpi_ic_fp_40px.png.flat",
-        "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/drawable-hdpi/ic_fp_40px.png"
-    },
-    {
         "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/layout_list_item.xml.flat",
         "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/layout/list_item.xml"
+    },
+    {
+        "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/drawable-hdpi_ic_fp_40px.png.flat",
+        "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/drawable-hdpi/ic_fp_40px.png"
     },
     {
         "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/drawable_ic_fingerprint_success.xml.flat",
