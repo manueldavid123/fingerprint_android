@@ -68,6 +68,10 @@
         "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/drawable-hdpi/ic_fp_40px.png"
     },
     {
+        "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/layout_list_item.xml.flat",
+        "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/layout/list_item.xml"
+    },
+    {
         "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/drawable_ic_fingerprint_success.xml.flat",
         "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/drawable/ic_fingerprint_success.xml"
     },
@@ -78,6 +82,10 @@
     {
         "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/layout_fingerprint_dialog_backup.xml.flat",
         "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/layout/fingerprint_dialog_backup.xml"
+    },
+    {
+        "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/layout_activity_administration.xml.flat",
+        "source": "/Users/manuel/Downloads/FingerprintDialog/Application/src/main/res/layout/activity_administration.xml"
     },
     {
         "merged": "/Users/manuel/Downloads/FingerprintDialog/Application/build/intermediates/res/merged/debug/layout_fingerprint_dialog_content.xml.flat",

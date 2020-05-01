@@ -4,6 +4,8 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity(tableName = "fingerprints")
@@ -68,12 +70,8 @@ public class Fingerprint {
 
     @Override
     public String toString() {
-        return "Fingerprint{" +
-                "id=" + id +
-                ", accepted=" + accepted +
-                ", valid=" + valid +
-                ", read=" + read +
-                ", timestamp=" + timestamp +
-                '}';
+        Date date = new Date(timestamp);
+
+        return "Fecha: " + date.toString() + "\nAceptada: " + accepted + "\nValida: " + valid + "\nLeída: " + read;
     }
 }

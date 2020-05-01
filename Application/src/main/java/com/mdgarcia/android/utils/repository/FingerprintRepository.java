@@ -60,4 +60,17 @@ public class FingerprintRepository {
             }
         });
     }
+
+    public void remove(final Fingerprint fingerprint) {
+        FingerprintDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                fingerprintDao.deleteFingerprints(fingerprint);
+            }
+        });
+    }
+
+    public LiveData<List<Fingerprint>> getAllLive() {
+        return fingerprintDao.getAllLive();
+    }
 }

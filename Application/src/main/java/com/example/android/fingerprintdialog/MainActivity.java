@@ -106,6 +106,7 @@ public class MainActivity extends Activity {
         KeyguardManager keyguardManager = getSystemService(KeyguardManager.class);
         FingerprintManager fingerprintManager = getSystemService(FingerprintManager.class);
         Button purchaseButton = (Button) findViewById(R.id.purchase_button);
+        Button adminButton = (Button) findViewById(R.id.admin_fingerprints);
 
         if (!keyguardManager.isKeyguardSecure()) {
             // Show a message that the user hasn't set up a fingerprint or lock screen.
@@ -134,6 +135,10 @@ public class MainActivity extends Activity {
         purchaseButton.setEnabled(true);
         purchaseButton.setOnClickListener(
                 new PurchaseButtonClickListener(defaultCipher, DEFAULT_KEY_NAME));
+
+        adminButton.setEnabled(true);
+        adminButton.setOnClickListener(new AdminButtonClickListener());
+
     }
 
     /**
@@ -323,6 +328,15 @@ public class MainActivity extends Activity {
                         FingerprintAuthenticationDialogFragment.Stage.NEW_FINGERPRINT_ENROLLED);
                 fragment.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
             }
+        }
+    }
+
+    private static class AdminButtonClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), Administration.class);
+            v.getContext().startActivity(intent);
         }
     }
 }
