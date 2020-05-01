@@ -174,21 +174,29 @@ public class MainActivity extends Activity {
             tryEncrypt(cryptoObject.getCipher());
         } else {
             // Authentication happened with backup password. Just show the confirmation message.
-            showConfirmation(null);
+            showConfirmation();
         }
     }
 
     // Show confirmation, if fingerprint was used show crypto information.
-    private void showConfirmation(byte[] encrypted) {
+    private void showConfirmation() {
         FingerprintRepository fingerprintRepository = new FingerprintRepository(getApplication());
         Fingerprint[] accepted  = fingerprintRepository.getAllAccepted();
         Fingerprint[] notAccepted = fingerprintRepository.getAllNotAffected();
+        Fingerprint[] acceptedAndValid = fingerprintRepository.getAllAcceptedAndValid();
+        Fingerprint[] notAcceptedAndValid = fingerprintRepository.getAllNotAcceptedAndValid();
 
         TextView acceptedWidget = (TextView) findViewById(R.id.accepted);
         acceptedWidget.setText(accepted.length + "");
 
         TextView notAcceptedWidget = (TextView) findViewById(R.id.notAccepted);
         notAcceptedWidget.setText(notAccepted.length + "");
+
+        TextView acceptedValidWidget = (TextView) findViewById(R.id.acceptedValid);
+        acceptedValidWidget.setText(acceptedAndValid.length + "");
+
+        TextView notAcceptedValidWidget = (TextView) findViewById(R.id.notAcceptedValid);
+        notAcceptedValidWidget.setText(notAcceptedAndValid.length + "");
     }
 
     /**
@@ -198,11 +206,9 @@ public class MainActivity extends Activity {
     private void tryEncrypt(Cipher cipher) {
         try {
             byte[] encrypted = cipher.doFinal(SECRET_MESSAGE.getBytes());
-            showConfirmation(encrypted);
+            showConfirmation();
         } catch (BadPaddingException | IllegalBlockSizeException e) {
-            Toast.makeText(this, "Failed to encrypt the data with the generated key. "
-                    + "Retry the purchase", Toast.LENGTH_LONG).show();
-            Log.e(TAG, "Failed to encrypt the data with the generated key." + e.getMessage());
+            showConfirmation();
         }
     }
 

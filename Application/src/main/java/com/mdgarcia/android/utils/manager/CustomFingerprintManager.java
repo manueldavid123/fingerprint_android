@@ -15,8 +15,8 @@ public class CustomFingerprintManager {
         );
     }
 
-    public void addFingerprint(boolean isAccepted) {
-        Fingerprint fingerprint = new Fingerprint(isAccepted);
+    public void addFingerprint(boolean isAccepted, boolean valid, boolean read) {
+        Fingerprint fingerprint = new Fingerprint(isAccepted, valid, read);
 
         this.fingerprintRepository.insert(fingerprint);
     }

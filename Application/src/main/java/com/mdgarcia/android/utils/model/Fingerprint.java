@@ -12,12 +12,18 @@ public class Fingerprint {
     private int id;
     @ColumnInfo(name = "accepted")
     private boolean accepted;
+    @ColumnInfo(name = "valid")
+    private boolean valid;
+    @ColumnInfo(name = "read")
+    private boolean read;
     @ColumnInfo(name = "timestamp")
     private Long timestamp;
 
-    public Fingerprint(boolean accepted) {
+    public Fingerprint(boolean accepted, boolean valid, boolean read) {
         this.accepted = accepted;
+        this.valid = valid;
         this.timestamp = new Date().getTime();
+        this.read = read;
     }
 
     public int getId() {
@@ -44,11 +50,29 @@ public class Fingerprint {
         this.timestamp = timestamp;
     }
 
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
+
+    public boolean isRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
+    }
+
     @Override
     public String toString() {
         return "Fingerprint{" +
                 "id=" + id +
                 ", accepted=" + accepted +
+                ", valid=" + valid +
+                ", read=" + read +
                 ", timestamp=" + timestamp +
                 '}';
     }

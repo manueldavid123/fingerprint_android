@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 /**
@@ -41,8 +42,6 @@ import android.widget.TextView;
 public class FingerprintAuthenticationDialogFragment extends DialogFragment
         implements TextView.OnEditorActionListener, FingerprintUiHelper.Callback {
 
-    private Button mCancelButton;
-    private Button mSecondDialogButton;
     private View mFingerprintContent;
     private View mBackupContent;
     private EditText mPassword;
@@ -73,25 +72,6 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
             Bundle savedInstanceState) {
         getDialog().setTitle(getString(R.string.sign_in));
         View v = inflater.inflate(R.layout.fingerprint_dialog_container, container, false);
-        mCancelButton = (Button) v.findViewById(R.id.cancel_button);
-        mCancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
-
-        mSecondDialogButton = (Button) v.findViewById(R.id.second_dialog_button);
-        mSecondDialogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mStage == Stage.FINGERPRINT) {
-                    goToBackup();
-                } else {
-                    verifyPassword();
-                }
-            }
-        });
         mFingerprintContent = v.findViewById(R.id.fingerprint_container);
         mBackupContent = v.findViewById(R.id.backup_container);
         mPassword = (EditText) v.findViewById(R.id.password);
@@ -101,12 +81,16 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
                 v.findViewById(R.id.use_fingerprint_in_future_check);
         mNewFingerprintEnrolledTextView = (TextView)
                 v.findViewById(R.id.new_fingerprint_enrolled_description);
+        Button button = (Button) v.findViewById(R.id.button_save);
         mFingerprintUiHelper = new FingerprintUiHelper(
                 mActivity.getSystemService(FingerprintManager.class),
                 (ImageView) v.findViewById(R.id.fingerprint_icon),
                 (TextView) v.findViewById(R.id.fingerprint_status),
                 this,
-                getActivity().getApplication());
+                getActivity().getApplication(),
+                (Switch) v.findViewById(R.id.switch_valid),
+                button
+        );
         updateStage();
 
         // If fingerprint authentication is not available, switch immediately to the backup
@@ -211,16 +195,12 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
     private void updateStage() {
         switch (mStage) {
             case FINGERPRINT:
-                mCancelButton.setText(R.string.cancel);
-                mSecondDialogButton.setText(R.string.use_password);
                 mFingerprintContent.setVisibility(View.VISIBLE);
                 mBackupContent.setVisibility(View.GONE);
                 break;
             case NEW_FINGERPRINT_ENROLLED:
                 // Intentional fall through
             case PASSWORD:
-                mCancelButton.setText(R.string.cancel);
-                mSecondDialogButton.setText(R.string.ok);
                 mFingerprintContent.setVisibility(View.GONE);
                 mBackupContent.setVisibility(View.VISIBLE);
                 if (mStage == Stage.NEW_FINGERPRINT_ENROLLED) {
@@ -247,11 +227,6 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
         // successful.
         mActivity.onPurchased(true /* withFingerprint */, mCryptoObject);
         dismiss();
-    }
-
-    @Override
-    public void onError() {
-        goToBackup();
     }
 
     /**

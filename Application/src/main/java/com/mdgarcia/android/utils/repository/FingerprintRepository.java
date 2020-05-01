@@ -32,6 +32,26 @@ public class FingerprintRepository {
         return fingerprintDao.getNotAccepted();
     }
 
+    public Fingerprint[] getAllAcceptedAndValid() {
+        return fingerprintDao.getAcceptedValid();
+    }
+
+    public Fingerprint[] getAllAcceptedAndNotValid() {
+        return fingerprintDao.getAcceptedNotValid();
+    }
+
+    public Fingerprint[] getAllNotAcceptedAndValid() {
+        return fingerprintDao.getNotAcceptedValid();
+    }
+
+    public Fingerprint[] getAllNotAcceptedAndNotValid() {
+        return fingerprintDao.getAcceptedNotValid();
+    }
+
+    public Fingerprint[] getAllNotRead() {
+        return fingerprintDao.getNotRead();
+    }
+
     public void insert(final Fingerprint fingerprint) {
         FingerprintDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override

@@ -20,4 +20,15 @@ public interface FingerprintDao {
     public Fingerprint[] getAccepted();
     @Query("SELECT * FROM fingerprints where accepted = 0")
     public Fingerprint[] getNotAccepted();
+    @Query("SELECT * FROM fingerprints where accepted = 1 and valid = 1")
+    public Fingerprint[] getAcceptedValid();
+    @Query("SELECT * FROM fingerprints where accepted = 1 and valid = 0")
+    public Fingerprint[] getAcceptedNotValid();
+    @Query("SELECT * FROM fingerprints where accepted = 0 and valid = 0")
+    public Fingerprint[] getNotAcceptedNotValid();
+    @Query("SELECT * FROM fingerprints where accepted = 0 and valid = 1")
+    public Fingerprint[] getNotAcceptedValid();
+    @Query("SELECT * FROM fingerprints where read = 0")
+    public Fingerprint[] getNotRead();
+
 }

@@ -11,7 +11,7 @@ import com.mdgarcia.android.utils.model.Fingerprint;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Fingerprint.class}, version = 1, exportSchema = false)
+@Database(entities = {Fingerprint.class}, version = 3, exportSchema = false)
 public abstract class FingerprintDatabase extends RoomDatabase {
 
     public abstract FingerprintDao fingerprintDao();
@@ -27,6 +27,7 @@ public abstract class FingerprintDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             FingerprintDatabase.class, "fingerprint_database")
                             .allowMainThreadQueries()
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
