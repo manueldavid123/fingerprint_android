@@ -199,15 +199,6 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
                 mBackupContent.setVisibility(View.GONE);
                 break;
             case NEW_FINGERPRINT_ENROLLED:
-                // Intentional fall through
-            case PASSWORD:
-                mFingerprintContent.setVisibility(View.GONE);
-                mBackupContent.setVisibility(View.VISIBLE);
-                if (mStage == Stage.NEW_FINGERPRINT_ENROLLED) {
-                    mPasswordDescriptionTextView.setVisibility(View.GONE);
-                    mNewFingerprintEnrolledTextView.setVisibility(View.VISIBLE);
-                    mUseFingerprintFutureCheckBox.setVisibility(View.VISIBLE);
-                }
                 break;
         }
     }

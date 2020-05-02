@@ -16,8 +16,8 @@
 
 package com.example.android.fingerprintdialog;
 
-import android.app.Activity;
-import android.app.KeyguardManager;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.fingerprint.FingerprintManager;
@@ -29,17 +29,15 @@ import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mdgarcia.android.utils.manager.CustomFingerprintManager;
+import com.mdgarcia.android.utils.manager.FingerprintViewModel;
 import com.mdgarcia.android.utils.model.Fingerprint;
-import com.mdgarcia.android.utils.repository.FingerprintRepository;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -50,6 +48,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.util.List;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -73,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private KeyStore mKeyStore;
     private KeyGenerator mKeyGenerator;
     private SharedPreferences mSharedPreferences;
+    private CustomFingerprintManager customFingerprintManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,33 +104,19 @@ public class MainActivity extends AppCompatActivity {
         }
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        KeyguardManager keyguardManager = getSystemService(KeyguardManager.class);
         FingerprintManager fingerprintManager = getSystemService(FingerprintManager.class);
         Button purchaseButton = (Button) findViewById(R.id.purchase_button);
         Button adminButton = (Button) findViewById(R.id.admin_fingerprints);
 
-        if (!keyguardManager.isKeyguardSecure()) {
-            // Show a message that the user hasn't set up a fingerprint or lock screen.
-            Toast.makeText(this,
-                    "Secure lock screen hasn't set up.\n"
-                            + "Go to 'Settings -> Security -> Fingerprint' to set up a fingerprint",
-                    Toast.LENGTH_LONG).show();
-            purchaseButton.setEnabled(false);
-            return;
-        }
-
-        // Now the protection level of USE_FINGERPRINT permission is normal instead of dangerous.
-        // See http://developer.android.com/reference/android/Manifest.permission.html#USE_FINGERPRINT
-        // The line below prevents the false positive inspection from Android Studio
-        // noinspection ResourceType
         if (!fingerprintManager.hasEnrolledFingerprints()) {
             purchaseButton.setEnabled(false);
             // This happens when no fingerprints are registered.
             Toast.makeText(this,
-                    "Go to 'Settings -> Security -> Fingerprint' and register at least one fingerprint",
+                    "Al menos una huella tiene que estar configurada. Por favor, diríjase a su configuración y configure una.",
                     Toast.LENGTH_LONG).show();
             return;
         }
+
         createKey(DEFAULT_KEY_NAME, true);
         createKey(KEY_NAME_NOT_INVALIDATED, false);
         purchaseButton.setEnabled(true);
@@ -139,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
         adminButton.setEnabled(true);
         adminButton.setOnClickListener(new AdminButtonClickListener());
+        customFingerprintManager = new CustomFingerprintManager(getApplication());
+
+        showConfirmation();
 
     }
 
@@ -186,23 +175,80 @@ public class MainActivity extends AppCompatActivity {
 
     // Show confirmation, if fingerprint was used show crypto information.
     private void showConfirmation() {
-        FingerprintRepository fingerprintRepository = new FingerprintRepository(getApplication());
-        Fingerprint[] accepted  = fingerprintRepository.getAllAccepted();
-        Fingerprint[] notAccepted = fingerprintRepository.getAllNotAffected();
-        Fingerprint[] acceptedAndValid = fingerprintRepository.getAllAcceptedAndValid();
-        Fingerprint[] notAcceptedAndValid = fingerprintRepository.getAllNotAcceptedAndValid();
+        final TextView totalWidget = (TextView) findViewById(R.id.total);
+        final TextView totalAcceptedWidget = (TextView) findViewById(R.id.totalAccepted);
+        final TextView totalNotAcceptedWidget = (TextView) findViewById(R.id.totalNotAccepted);
+        final TextView totalErrors = (TextView) findViewById(R.id.totalError);
+        final TextView farWidget = (TextView) findViewById(R.id.far);
+        final TextView frrWidget = (TextView) findViewById(R.id.frr);
+        final TextView notRead = (TextView) findViewById(R.id.fta);
 
-        TextView acceptedWidget = (TextView) findViewById(R.id.accepted);
-        acceptedWidget.setText(accepted.length + "");
+        FingerprintViewModel fingerprintViewModel = ViewModelProviders.of(this).get(FingerprintViewModel.class);
 
-        TextView notAcceptedWidget = (TextView) findViewById(R.id.notAccepted);
-        notAcceptedWidget.setText(notAccepted.length + "");
+        fingerprintViewModel.getAllItems().observe(this, new Observer<List<Fingerprint>>() {
+            @Override
+            public void onChanged(@Nullable List<Fingerprint> fingerprints) {
+                totalWidget.setText(fingerprints.size() + "");
+            }
+        });
 
-        TextView acceptedValidWidget = (TextView) findViewById(R.id.acceptedValid);
-        acceptedValidWidget.setText(acceptedAndValid.length + "");
+        fingerprintViewModel.getAllAcceptedAndValid().observe(this, new Observer<List<Fingerprint>>() {
+            @Override
+            public void onChanged(@Nullable List<Fingerprint> fingerprints) {
+                totalAcceptedWidget.setText(fingerprints.size() + "");
+            }
+        });
 
-        TextView notAcceptedValidWidget = (TextView) findViewById(R.id.notAcceptedValid);
-        notAcceptedValidWidget.setText(notAcceptedAndValid.length + "");
+        fingerprintViewModel.getAllNotAcceptedAndValid().observe(this, new Observer<List<Fingerprint>>() {
+            @Override
+            public void onChanged(@Nullable List<Fingerprint> fingerprints) {
+                totalNotAcceptedWidget.setText(fingerprints.size() + "");
+            }
+        });
+
+        fingerprintViewModel.getAllAcceptedAndNotValid().observe(this, new Observer<List<Fingerprint>>() {
+            @Override
+            public void onChanged(@Nullable List<Fingerprint> fingerprints) {
+                int allAcceptedAndNotValid = fingerprints.size();
+                int allFingerprintsCount = customFingerprintManager.getFingerprints();
+                float percentage = 0;
+                if (allFingerprintsCount > 0) {
+                    percentage = (float) allAcceptedAndNotValid / allFingerprintsCount * 100;
+                }
+
+                farWidget.setText(percentage + " %");
+            }
+        });
+
+        fingerprintViewModel.getNotAcceptedNotValid().observe(this, new Observer<List<Fingerprint>>() {
+            @Override
+            public void onChanged(@Nullable List<Fingerprint> fingerprints) {
+                int notAcceptedAndValid = fingerprints.size();
+                int allFingerprintsCount = customFingerprintManager.getFingerprints();
+
+                float percentage = 0;
+                if (allFingerprintsCount > 0) {
+                    percentage = (float) notAcceptedAndValid / allFingerprintsCount * 100;
+                }
+
+                frrWidget.setText(percentage + " %");
+            }
+        });
+
+        fingerprintViewModel.getNotRead().observe(this, new Observer<List<Fingerprint>>() {
+            @Override
+            public void onChanged(@Nullable List<Fingerprint> fingerprints) {
+                int notReadCount = fingerprints.size();
+                int allFingerprintsCount = customFingerprintManager.getFingerprints();
+
+                float percentage = 0;
+                if (allFingerprintsCount > 0) {
+                    percentage = (float) notReadCount / allFingerprintsCount * 100;
+                }
+                notRead.setText(percentage + " %");
+                totalErrors.setText(notReadCount + "");
+            }
+        });
     }
 
     /**

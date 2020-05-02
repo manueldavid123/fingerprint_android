@@ -24,8 +24,24 @@ public class CustomFingerprintManager {
         this.fingerprintRepository.insert(fingerprint);
     }
 
-    public Fingerprint[] getFingerprints() {
+    public int getFingerprints() {
         return this.fingerprintRepository.getAllFingerprints();
+    }
+
+    public LiveData<List<Fingerprint>> getAllAcceptedAndValid() {
+        return this.fingerprintRepository.getAllAcceptedAndValid();
+    }
+
+    public LiveData<List<Fingerprint>> getAllNotAcceptedAndValid() {
+        return this.fingerprintRepository.getAllNotAcceptedAndValid();
+    }
+
+    public LiveData<List<Fingerprint>> getAllAcceptedAndNotValid() {
+        return this.fingerprintRepository.getAllAcceptedAndNotValid();
+    }
+
+    public LiveData<List<Fingerprint>> getNotAcceptedNotValid() {
+        return this.fingerprintRepository.getNotAcceptedNotValid();
     }
 
     public void removeFingerprint(Fingerprint fingerprint) {
@@ -34,5 +50,9 @@ public class CustomFingerprintManager {
 
     public LiveData<List<Fingerprint>> getAllLive() {
         return this.fingerprintRepository.getAllLive();
+    }
+
+    public LiveData<List<Fingerprint>> getNotRead() {
+        return this.fingerprintRepository.getNotRead();
     }
 }

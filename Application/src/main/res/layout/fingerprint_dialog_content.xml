@@ -67,7 +67,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="87dp"
         android:checked="true"
-        android:text="¿Es el resultado válido?"
+        android:text="¿Es el resultado esperado?"
         android:textOff="No"
         android:textOn="Si"
         android:visibility="invisible"

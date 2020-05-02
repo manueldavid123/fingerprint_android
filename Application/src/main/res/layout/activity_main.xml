@@ -24,17 +24,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <Button
-            android:id="@+id/purchase_button"
-            style="@android:style/Widget.Material.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
-            android:text="@string/purchase"
-            android:textColor="?android:attr/textColorPrimaryInverse" />
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -53,10 +42,55 @@
                     android:id="@+id/textView"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
-                    android:text="Aciertos" />
+                    android:text="Total lecturas" />
 
                 <TextView
-                    android:id="@+id/accepted"
+                    android:id="@+id/total"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1" />
+
+            </TableRow>
+
+            <TableRow android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="Total aceptadas" />
+
+                <TextView
+                    android:id="@+id/totalAccepted"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1" />
+
+            </TableRow>
+
+            <TableRow android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="Total rechazadas" />
+
+                <TextView
+                    android:id="@+id/totalNotAccepted"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1" />
+
+            </TableRow>
+
+            <TableRow android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="Total fallos adquisición" />
+
+                <TextView
+                    android:id="@+id/totalError"
                     android:layout_height="wrap_content"
                     android:layout_column="1" />
 
@@ -70,10 +104,10 @@
                     android:id="@+id/textView4"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
-                    android:text="Fallos" />
+                    android:text="FAR" />
 
                 <TextView
-                    android:id="@+id/notAccepted"
+                    android:id="@+id/far"
                     android:layout_height="wrap_content"
                     android:layout_column="1" />
             </TableRow>
@@ -86,10 +120,10 @@
                     android:id="@+id/textView6"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
-                    android:text="Aciertos válidos" />
+                    android:text="FRR" />
 
                 <TextView
-                    android:id="@+id/acceptedValid"
+                    android:id="@+id/frr"
                     android:layout_height="wrap_content"
                     android:layout_column="1" />
             </TableRow>
@@ -102,10 +136,10 @@
                     android:id="@+id/textView8"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
-                    android:text="Fallos válidos" />
+                    android:text="FTA" />
 
                 <TextView
-                    android:id="@+id/notAcceptedValid"
+                    android:id="@+id/fta"
                     android:layout_height="wrap_content"
                     android:layout_column="1" />
             </TableRow>
@@ -121,11 +155,22 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/purchase_button"
+                style="@android:style/Widget.Material.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/purchase"
+                android:textColor="?android:attr/textColorPrimaryInverse" />
+
+            <Button
                 android:id="@+id/admin_fingerprints"
                 style="@android:style/Widget.Material.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ADMINISTRAR HUELLAS" />
+                android:text="ADMINISTRAR LECTURAS" />
         </LinearLayout>
 
     </LinearLayout>

@@ -26,6 +26,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.mdgarcia.android.utils.manager.CustomFingerprintManager;
+import com.mdgarcia.android.utils.model.Fingerprint;
 
 
 /**
@@ -99,14 +100,17 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
     public void onAuthenticationError(int errMsgId, CharSequence errString) {
         if (!mSelfCancelled) {
             showError(errString);
-            showFinalButtons(false, false);
+            showFinalButtons(false, false, false);
         }
     }
 
     @Override
     public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
-        showError(helpString);
-        showFinalButtons(false, false);
+        if (FingerprintManager.FINGERPRINT_ERROR_LOCKOUT != helpMsgId) {
+            showError(helpString);
+            showFinalButtons(false, false, false);
+        }
+
     }
 
     @Override
@@ -114,7 +118,7 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
          showError(mIcon.getResources().getString(
                 R.string.fingerprint_not_recognized));
 
-        showFinalButtons(false, true);
+        showFinalButtons(false, true, true);
     }
 
     @Override
@@ -125,17 +129,19 @@ public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallba
                 mErrorTextView.getResources().getColor(R.color.success_color, null));
         mErrorTextView.setText(
                 mErrorTextView.getResources().getString(R.string.fingerprint_success));
-        showFinalButtons(true, true);
+        showFinalButtons(true, true, true);
     }
 
-    private void showFinalButtons(final boolean isAuthenticated, final boolean read) {
+    private void showFinalButtons(final boolean isAuthenticated, final boolean read, final boolean showSwitch) {
         this.stopListening();
         aButton.setVisibility(View.VISIBLE);
-        aSwitch.setVisibility(View.VISIBLE);
+        if (showSwitch) {
+            aSwitch.setVisibility(View.VISIBLE);
+        }
         aButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean switchValue = aSwitch.isChecked();
+                boolean switchValue = showSwitch && aSwitch.isChecked();
                 customFingerprintManager.addFingerprint(isAuthenticated, switchValue, read);
 
                 mCallback.onAuthenticated();

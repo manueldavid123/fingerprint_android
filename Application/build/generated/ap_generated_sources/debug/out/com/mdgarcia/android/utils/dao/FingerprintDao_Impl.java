@@ -90,45 +90,16 @@ public class FingerprintDao_Impl implements FingerprintDao {
   }
 
   @Override
-  public Fingerprint[] getAll() {
-    final String _sql = "SELECT * FROM fingerprints";
+  public int getAll() {
+    final String _sql = "SELECT count(*) FROM fingerprints";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
     final Cursor _cursor = __db.query(_statement);
     try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
-      final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
-      final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
-      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
-      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
-      int _index = 0;
-      while(_cursor.moveToNext()) {
-        final Fingerprint _item;
-        final boolean _tmpAccepted;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
-        _tmpAccepted = _tmp != 0;
-        final boolean _tmpValid;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
-        _tmpValid = _tmp_1 != 0;
-        final boolean _tmpRead;
-        final int _tmp_2;
-        _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
-        _tmpRead = _tmp_2 != 0;
-        _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item.setId(_tmpId);
-        final Long _tmpTimestamp;
-        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-          _tmpTimestamp = null;
-        } else {
-          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
-        }
-        _item.setTimestamp(_tmpTimestamp);
-        _result[_index] = _item;
-        _index ++;
+      final int _result;
+      if(_cursor.moveToFirst()) {
+        _result = _cursor.getInt(0);
+      } else {
+        _result = 0;
       }
       return _result;
     } finally {
@@ -138,339 +109,333 @@ public class FingerprintDao_Impl implements FingerprintDao {
   }
 
   @Override
-  public Fingerprint[] getAccepted() {
-    final String _sql = "SELECT * FROM fingerprints where accepted = 1";
+  public LiveData<List<Fingerprint>> getAcceptedValid() {
+    final String _sql = "SELECT * FROM fingerprints where accepted = 1 and valid = 1 and read = 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
-      final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
-      final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
-      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
-      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
-      int _index = 0;
-      while(_cursor.moveToNext()) {
-        final Fingerprint _item;
-        final boolean _tmpAccepted;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
-        _tmpAccepted = _tmp != 0;
-        final boolean _tmpValid;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
-        _tmpValid = _tmp_1 != 0;
-        final boolean _tmpRead;
-        final int _tmp_2;
-        _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
-        _tmpRead = _tmp_2 != 0;
-        _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item.setId(_tmpId);
-        final Long _tmpTimestamp;
-        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-          _tmpTimestamp = null;
-        } else {
-          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+    return new ComputableLiveData<List<Fingerprint>>() {
+      private Observer _observer;
+
+      @Override
+      protected List<Fingerprint> compute() {
+        if (_observer == null) {
+          _observer = new Observer("fingerprints") {
+            @Override
+            public void onInvalidated(@NonNull Set<String> tables) {
+              invalidate();
+            }
+          };
+          __db.getInvalidationTracker().addWeakObserver(_observer);
         }
-        _item.setTimestamp(_tmpTimestamp);
-        _result[_index] = _item;
-        _index ++;
+        final Cursor _cursor = __db.query(_statement);
+        try {
+          final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
+          final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
+          final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
+          final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
+          final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
+          final List<Fingerprint> _result = new ArrayList<Fingerprint>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Fingerprint _item;
+            final boolean _tmpAccepted;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfAccepted);
+            _tmpAccepted = _tmp != 0;
+            final boolean _tmpValid;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
+            _tmpValid = _tmp_1 != 0;
+            final boolean _tmpRead;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
+            _tmpRead = _tmp_2 != 0;
+            _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            _item.setId(_tmpId);
+            final Long _tmpTimestamp;
+            if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            }
+            _item.setTimestamp(_tmpTimestamp);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
       }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    }.getLiveData();
   }
 
   @Override
-  public Fingerprint[] getNotAccepted() {
-    final String _sql = "SELECT * FROM fingerprints where accepted = 0";
+  public LiveData<List<Fingerprint>> getNotAcceptedValid() {
+    final String _sql = "SELECT * FROM fingerprints where accepted = 0 and valid = 1 and read = 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
-      final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
-      final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
-      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
-      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
-      int _index = 0;
-      while(_cursor.moveToNext()) {
-        final Fingerprint _item;
-        final boolean _tmpAccepted;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
-        _tmpAccepted = _tmp != 0;
-        final boolean _tmpValid;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
-        _tmpValid = _tmp_1 != 0;
-        final boolean _tmpRead;
-        final int _tmp_2;
-        _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
-        _tmpRead = _tmp_2 != 0;
-        _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item.setId(_tmpId);
-        final Long _tmpTimestamp;
-        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-          _tmpTimestamp = null;
-        } else {
-          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+    return new ComputableLiveData<List<Fingerprint>>() {
+      private Observer _observer;
+
+      @Override
+      protected List<Fingerprint> compute() {
+        if (_observer == null) {
+          _observer = new Observer("fingerprints") {
+            @Override
+            public void onInvalidated(@NonNull Set<String> tables) {
+              invalidate();
+            }
+          };
+          __db.getInvalidationTracker().addWeakObserver(_observer);
         }
-        _item.setTimestamp(_tmpTimestamp);
-        _result[_index] = _item;
-        _index ++;
+        final Cursor _cursor = __db.query(_statement);
+        try {
+          final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
+          final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
+          final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
+          final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
+          final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
+          final List<Fingerprint> _result = new ArrayList<Fingerprint>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Fingerprint _item;
+            final boolean _tmpAccepted;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfAccepted);
+            _tmpAccepted = _tmp != 0;
+            final boolean _tmpValid;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
+            _tmpValid = _tmp_1 != 0;
+            final boolean _tmpRead;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
+            _tmpRead = _tmp_2 != 0;
+            _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            _item.setId(_tmpId);
+            final Long _tmpTimestamp;
+            if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            }
+            _item.setTimestamp(_tmpTimestamp);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
       }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    }.getLiveData();
   }
 
   @Override
-  public Fingerprint[] getAcceptedValid() {
-    final String _sql = "SELECT * FROM fingerprints where accepted = 1 and valid = 1";
+  public LiveData<List<Fingerprint>> getAcceptedNotValid() {
+    final String _sql = "SELECT * FROM fingerprints where accepted = 1 and valid = 0 and read = 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
-      final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
-      final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
-      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
-      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
-      int _index = 0;
-      while(_cursor.moveToNext()) {
-        final Fingerprint _item;
-        final boolean _tmpAccepted;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
-        _tmpAccepted = _tmp != 0;
-        final boolean _tmpValid;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
-        _tmpValid = _tmp_1 != 0;
-        final boolean _tmpRead;
-        final int _tmp_2;
-        _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
-        _tmpRead = _tmp_2 != 0;
-        _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item.setId(_tmpId);
-        final Long _tmpTimestamp;
-        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-          _tmpTimestamp = null;
-        } else {
-          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+    return new ComputableLiveData<List<Fingerprint>>() {
+      private Observer _observer;
+
+      @Override
+      protected List<Fingerprint> compute() {
+        if (_observer == null) {
+          _observer = new Observer("fingerprints") {
+            @Override
+            public void onInvalidated(@NonNull Set<String> tables) {
+              invalidate();
+            }
+          };
+          __db.getInvalidationTracker().addWeakObserver(_observer);
         }
-        _item.setTimestamp(_tmpTimestamp);
-        _result[_index] = _item;
-        _index ++;
+        final Cursor _cursor = __db.query(_statement);
+        try {
+          final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
+          final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
+          final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
+          final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
+          final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
+          final List<Fingerprint> _result = new ArrayList<Fingerprint>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Fingerprint _item;
+            final boolean _tmpAccepted;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfAccepted);
+            _tmpAccepted = _tmp != 0;
+            final boolean _tmpValid;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
+            _tmpValid = _tmp_1 != 0;
+            final boolean _tmpRead;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
+            _tmpRead = _tmp_2 != 0;
+            _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            _item.setId(_tmpId);
+            final Long _tmpTimestamp;
+            if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            }
+            _item.setTimestamp(_tmpTimestamp);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
       }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    }.getLiveData();
   }
 
   @Override
-  public Fingerprint[] getAcceptedNotValid() {
-    final String _sql = "SELECT * FROM fingerprints where accepted = 1 and valid = 0";
+  public LiveData<List<Fingerprint>> getNotAcceptedNotValid() {
+    final String _sql = "SELECT * FROM fingerprints where accepted = 0 and valid = 0 and read = 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
-      final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
-      final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
-      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
-      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
-      int _index = 0;
-      while(_cursor.moveToNext()) {
-        final Fingerprint _item;
-        final boolean _tmpAccepted;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
-        _tmpAccepted = _tmp != 0;
-        final boolean _tmpValid;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
-        _tmpValid = _tmp_1 != 0;
-        final boolean _tmpRead;
-        final int _tmp_2;
-        _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
-        _tmpRead = _tmp_2 != 0;
-        _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item.setId(_tmpId);
-        final Long _tmpTimestamp;
-        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-          _tmpTimestamp = null;
-        } else {
-          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+    return new ComputableLiveData<List<Fingerprint>>() {
+      private Observer _observer;
+
+      @Override
+      protected List<Fingerprint> compute() {
+        if (_observer == null) {
+          _observer = new Observer("fingerprints") {
+            @Override
+            public void onInvalidated(@NonNull Set<String> tables) {
+              invalidate();
+            }
+          };
+          __db.getInvalidationTracker().addWeakObserver(_observer);
         }
-        _item.setTimestamp(_tmpTimestamp);
-        _result[_index] = _item;
-        _index ++;
+        final Cursor _cursor = __db.query(_statement);
+        try {
+          final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
+          final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
+          final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
+          final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
+          final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
+          final List<Fingerprint> _result = new ArrayList<Fingerprint>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Fingerprint _item;
+            final boolean _tmpAccepted;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfAccepted);
+            _tmpAccepted = _tmp != 0;
+            final boolean _tmpValid;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
+            _tmpValid = _tmp_1 != 0;
+            final boolean _tmpRead;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
+            _tmpRead = _tmp_2 != 0;
+            _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            _item.setId(_tmpId);
+            final Long _tmpTimestamp;
+            if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            }
+            _item.setTimestamp(_tmpTimestamp);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
       }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    }.getLiveData();
   }
 
   @Override
-  public Fingerprint[] getNotAcceptedNotValid() {
-    final String _sql = "SELECT * FROM fingerprints where accepted = 0 and valid = 0";
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
-      final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
-      final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
-      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
-      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
-      int _index = 0;
-      while(_cursor.moveToNext()) {
-        final Fingerprint _item;
-        final boolean _tmpAccepted;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
-        _tmpAccepted = _tmp != 0;
-        final boolean _tmpValid;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
-        _tmpValid = _tmp_1 != 0;
-        final boolean _tmpRead;
-        final int _tmp_2;
-        _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
-        _tmpRead = _tmp_2 != 0;
-        _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item.setId(_tmpId);
-        final Long _tmpTimestamp;
-        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-          _tmpTimestamp = null;
-        } else {
-          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
-        }
-        _item.setTimestamp(_tmpTimestamp);
-        _result[_index] = _item;
-        _index ++;
-      }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
-  }
-
-  @Override
-  public Fingerprint[] getNotAcceptedValid() {
-    final String _sql = "SELECT * FROM fingerprints where accepted = 0 and valid = 1";
-    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
-      final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
-      final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
-      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
-      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
-      int _index = 0;
-      while(_cursor.moveToNext()) {
-        final Fingerprint _item;
-        final boolean _tmpAccepted;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
-        _tmpAccepted = _tmp != 0;
-        final boolean _tmpValid;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
-        _tmpValid = _tmp_1 != 0;
-        final boolean _tmpRead;
-        final int _tmp_2;
-        _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
-        _tmpRead = _tmp_2 != 0;
-        _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item.setId(_tmpId);
-        final Long _tmpTimestamp;
-        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-          _tmpTimestamp = null;
-        } else {
-          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
-        }
-        _item.setTimestamp(_tmpTimestamp);
-        _result[_index] = _item;
-        _index ++;
-      }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
-  }
-
-  @Override
-  public Fingerprint[] getNotRead() {
+  public LiveData<List<Fingerprint>> getNotRead() {
     final String _sql = "SELECT * FROM fingerprints where read = 0";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
-    final Cursor _cursor = __db.query(_statement);
-    try {
-      final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
-      final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
-      final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
-      final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
-      final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
-      final Fingerprint[] _result = new Fingerprint[_cursor.getCount()];
-      int _index = 0;
-      while(_cursor.moveToNext()) {
-        final Fingerprint _item;
-        final boolean _tmpAccepted;
-        final int _tmp;
-        _tmp = _cursor.getInt(_cursorIndexOfAccepted);
-        _tmpAccepted = _tmp != 0;
-        final boolean _tmpValid;
-        final int _tmp_1;
-        _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
-        _tmpValid = _tmp_1 != 0;
-        final boolean _tmpRead;
-        final int _tmp_2;
-        _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
-        _tmpRead = _tmp_2 != 0;
-        _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
-        final int _tmpId;
-        _tmpId = _cursor.getInt(_cursorIndexOfId);
-        _item.setId(_tmpId);
-        final Long _tmpTimestamp;
-        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
-          _tmpTimestamp = null;
-        } else {
-          _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+    return new ComputableLiveData<List<Fingerprint>>() {
+      private Observer _observer;
+
+      @Override
+      protected List<Fingerprint> compute() {
+        if (_observer == null) {
+          _observer = new Observer("fingerprints") {
+            @Override
+            public void onInvalidated(@NonNull Set<String> tables) {
+              invalidate();
+            }
+          };
+          __db.getInvalidationTracker().addWeakObserver(_observer);
         }
-        _item.setTimestamp(_tmpTimestamp);
-        _result[_index] = _item;
-        _index ++;
+        final Cursor _cursor = __db.query(_statement);
+        try {
+          final int _cursorIndexOfId = _cursor.getColumnIndexOrThrow("id");
+          final int _cursorIndexOfAccepted = _cursor.getColumnIndexOrThrow("accepted");
+          final int _cursorIndexOfValid = _cursor.getColumnIndexOrThrow("valid");
+          final int _cursorIndexOfRead = _cursor.getColumnIndexOrThrow("read");
+          final int _cursorIndexOfTimestamp = _cursor.getColumnIndexOrThrow("timestamp");
+          final List<Fingerprint> _result = new ArrayList<Fingerprint>(_cursor.getCount());
+          while(_cursor.moveToNext()) {
+            final Fingerprint _item;
+            final boolean _tmpAccepted;
+            final int _tmp;
+            _tmp = _cursor.getInt(_cursorIndexOfAccepted);
+            _tmpAccepted = _tmp != 0;
+            final boolean _tmpValid;
+            final int _tmp_1;
+            _tmp_1 = _cursor.getInt(_cursorIndexOfValid);
+            _tmpValid = _tmp_1 != 0;
+            final boolean _tmpRead;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfRead);
+            _tmpRead = _tmp_2 != 0;
+            _item = new Fingerprint(_tmpAccepted,_tmpValid,_tmpRead);
+            final int _tmpId;
+            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            _item.setId(_tmpId);
+            final Long _tmpTimestamp;
+            if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+              _tmpTimestamp = null;
+            } else {
+              _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            }
+            _item.setTimestamp(_tmpTimestamp);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
       }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    }.getLiveData();
   }
 
   @Override

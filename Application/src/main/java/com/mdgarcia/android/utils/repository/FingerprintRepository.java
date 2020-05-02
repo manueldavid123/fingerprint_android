@@ -20,35 +20,27 @@ public class FingerprintRepository {
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
-    public Fingerprint[] getAllFingerprints() {
+    public int getAllFingerprints() {
         return fingerprintDao.getAll();
     }
 
-    public Fingerprint[] getAllAccepted() {
-        return fingerprintDao.getAccepted();
-    }
-
-    public Fingerprint[] getAllNotAffected() {
-        return fingerprintDao.getNotAccepted();
-    }
-
-    public Fingerprint[] getAllAcceptedAndValid() {
+    public LiveData<List<Fingerprint>> getAllAcceptedAndValid() {
         return fingerprintDao.getAcceptedValid();
     }
 
-    public Fingerprint[] getAllAcceptedAndNotValid() {
-        return fingerprintDao.getAcceptedNotValid();
-    }
-
-    public Fingerprint[] getAllNotAcceptedAndValid() {
+    public LiveData<List<Fingerprint>> getAllNotAcceptedAndValid() {
         return fingerprintDao.getNotAcceptedValid();
     }
 
-    public Fingerprint[] getAllNotAcceptedAndNotValid() {
+    public LiveData<List<Fingerprint>> getAllAcceptedAndNotValid() {
         return fingerprintDao.getAcceptedNotValid();
     }
 
-    public Fingerprint[] getAllNotRead() {
+    public LiveData<List<Fingerprint>> getNotAcceptedNotValid() {
+        return fingerprintDao.getNotAcceptedNotValid();
+    }
+
+    public LiveData<List<Fingerprint>> getAllNotRead() {
         return fingerprintDao.getNotRead();
     }
 
@@ -72,5 +64,9 @@ public class FingerprintRepository {
 
     public LiveData<List<Fingerprint>> getAllLive() {
         return fingerprintDao.getAllLive();
+    }
+
+    public LiveData<List<Fingerprint>> getNotRead() {
+        return fingerprintDao.getNotRead();
     }
 }

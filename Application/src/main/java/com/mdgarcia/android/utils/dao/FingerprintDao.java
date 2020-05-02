@@ -17,22 +17,18 @@ public interface FingerprintDao {
     public void insertFingerprints(Fingerprint... fingerprints);
     @Delete
     public void deleteFingerprints(Fingerprint... fingerprints);
-    @Query("SELECT * FROM fingerprints")
-    public Fingerprint[] getAll();
-    @Query("SELECT * FROM fingerprints where accepted = 1")
-    public Fingerprint[] getAccepted();
-    @Query("SELECT * FROM fingerprints where accepted = 0")
-    public Fingerprint[] getNotAccepted();
-    @Query("SELECT * FROM fingerprints where accepted = 1 and valid = 1")
-    public Fingerprint[] getAcceptedValid();
-    @Query("SELECT * FROM fingerprints where accepted = 1 and valid = 0")
-    public Fingerprint[] getAcceptedNotValid();
-    @Query("SELECT * FROM fingerprints where accepted = 0 and valid = 0")
-    public Fingerprint[] getNotAcceptedNotValid();
-    @Query("SELECT * FROM fingerprints where accepted = 0 and valid = 1")
-    public Fingerprint[] getNotAcceptedValid();
+    @Query("SELECT count(*) FROM fingerprints")
+    public int getAll();
+    @Query("SELECT * FROM fingerprints where accepted = 1 and valid = 1 and read = 1")
+    public LiveData<List<Fingerprint>> getAcceptedValid();
+    @Query("SELECT * FROM fingerprints where accepted = 0 and valid = 1 and read = 1")
+    public LiveData<List<Fingerprint>> getNotAcceptedValid();
+    @Query("SELECT * FROM fingerprints where accepted = 1 and valid = 0 and read = 1")
+    public LiveData<List<Fingerprint>> getAcceptedNotValid();
+    @Query("SELECT * FROM fingerprints where accepted = 0 and valid = 0 and read = 1")
+    public LiveData<List<Fingerprint>> getNotAcceptedNotValid();
     @Query("SELECT * FROM fingerprints where read = 0")
-    public Fingerprint[] getNotRead();
+    public LiveData<List<Fingerprint>> getNotRead();
     @Query("SELECT * FROM fingerprints")
     public LiveData<List<Fingerprint>> getAllLive();
 

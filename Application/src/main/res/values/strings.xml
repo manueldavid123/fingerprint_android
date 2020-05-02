@@ -23,19 +23,19 @@
     <string name="action_settings">Settings</string>
     <string name="cancel">Cancel</string>
     <string name="use_password">Use password</string>
-    <string name="sign_in">Sign in</string>
+    <string name="sign_in">Lectura Huella</string>
     <string name="ok">OK</string>
     <string name="password">Password</string>
-    <string name="fingerprint_description">Confirm fingerprint to continue</string>
-    <string name="fingerprint_hint">Touch sensor</string>
-    <string name="password_description">Enter your store password to continue</string>
+    <string name="fingerprint_description">Pase su huella por el lector</string>
+    <string name="fingerprint_hint">Toque el sensor</string>
+    <string name="password_description">Introduzca la contraseña para continuar</string>
     <string name="purchase">Validar huella</string>
     <string name="purchase_not_invalidated">Huella no validada</string>
     <string name="purchase_button_not_invalidated_description">
         You can proceed to purchase with this button \n even if a new fingerprint is enrolled
     </string>
-    <string name="fingerprint_not_recognized">Fingerprint not recognized. Try again</string>
-    <string name="fingerprint_success">Fingerprint recognized</string>
+    <string name="fingerprint_not_recognized">Huella no reconocida</string>
+    <string name="fingerprint_success">Huella reconocida</string>
     <string name="item_title">Practica Manuel David García Cárdenas</string>
     <string name="item_description">Mesh backpack in white. Black textile trim throughout.</string>
     <string name="purchase_done">Purchase successful</string>
